@@ -11,7 +11,6 @@ class BooksList extends React.Component {
     }
 
     static getDerivedStateFromProps(props, state) {
-        console.log(props.books)
         return ({
             error: props.error,
             isLoaded: props.isLoaded,

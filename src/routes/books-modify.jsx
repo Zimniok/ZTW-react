@@ -98,7 +98,6 @@ class BooksModify extends React.Component {
 
     handleIDChange(event) {
         this.setState({ id: event.target.value })
-        console.log(this.state.id)
     }
 
     handleTitleChange(event) {
@@ -106,9 +105,7 @@ class BooksModify extends React.Component {
     }
 
     handleAuthorChange(event) {
-        console.log(event.target.value)
         this.setState({ authorId: event.target.value })
-        console.log(this.state.id)
     }
 
     handlePagesChange(event) {

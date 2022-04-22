@@ -1,12 +1,12 @@
 import React from "react";
 
-class AuthorsList extends React.Component {
+class LendsList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             error: props.error,
             isLoaded: props.isLoaded,
-            authors: props.authors
+            lends: props.lends
         };
     }
 
@@ -14,26 +14,25 @@ class AuthorsList extends React.Component {
         return ({
             error: props.error,
             isLoaded: props.isLoaded,
-            authors: props.authors
+            lends: props.lends
         })
     }
 
-    renderTableData(authors) {
-        return authors.map((author, index) => {
+    renderTableData(lends) {
+        return lends.map((lend, index) => {
             return (
-                <tr key={author.id}>
-                    <td>{author.id}</td>
-                    <td>{author.firstName}</td>
-                    <td>{author.lastName}</td>
-                    <td onClick={() => this.props.modifyauthor(author)}><i className="fa-solid fa-pen-to-square"></i></td>
-                    <td onClick={() => this.props.deleteauthor(author.id)}><i className="fa-regular fa-trash-can"></i></td>
+                <tr key={lend.bookId}>
+                    <td>{lend.id}</td>
+                    <td>{lend.firstName}</td>
+                    <td>{lend.lastName}</td>
+                    <td onClick={() => this.props.deletelend(lend.id)}><i className="fa-solid fa-arrow-rotate-left"></i></td>
                 </tr>
             )
         })
     }
 
     render() {
-        const { error, isLoaded, authors } = this.state;
+        const { error, isLoaded, lends } = this.state;
         if (error) {
             return <div>Błąd: {error.message}</div>;
         } else if (!isLoaded) {
@@ -46,15 +45,15 @@ class AuthorsList extends React.Component {
                     <table className="table">
                         <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Imię</th>
-                                <th>Nazwisko</th>
-                                <th>Edytuj</th>
-                                <th>Usuń</th>
+                                <th>Książka</th>
+                                <th>Autor</th>
+                                <th>Data wyporzyczenia</th>
+                                <th>Data zwrotu</th>
+                                <th>Oddaj</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {this.renderTableData(this.state.authors)}
+                            {this.renderTableData(this.state.lends)}
                         </tbody>
                     </table>
                 </div>
@@ -63,4 +62,4 @@ class AuthorsList extends React.Component {
     }
 }
 
-export default AuthorsList;
+export default LendsList;

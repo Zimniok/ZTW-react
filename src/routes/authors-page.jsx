@@ -28,7 +28,6 @@ class AuthorsPage extends React.Component {
                         isLoaded: true,
                         authors: result
                     });
-                    console.log(this.state.authors)
                 },
                 // Uwaga: to ważne, żeby obsłużyć błędy tutaj, a
                 // nie w bloku catch(), aby nie przetwarzać błędów
@@ -63,8 +62,7 @@ class AuthorsPage extends React.Component {
                 this.setState({
                     authors: this.state.authors.filter((author, _) => author.id != id)
                 })
-            ).then (() => console.log(this.state.authors))
-            .then (() => console.log(this.state.authors.filter((author, _) => author.id == id)));
+            );
     }
 
     renderForm(){

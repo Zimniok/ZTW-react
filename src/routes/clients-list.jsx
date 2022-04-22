@@ -11,7 +11,6 @@ class ClientsList extends React.Component {
     }
 
     static getDerivedStateFromProps(props, state) {
-        console.log(props.clients)
         return ({
             error: props.error,
             isLoaded: props.isLoaded,

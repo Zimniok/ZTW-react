@@ -28,7 +28,6 @@ class ClientsPage extends React.Component {
                         isLoaded: true,
                         clients: result
                     });
-                    console.log(this.state.clients)
                 },
                 // Uwaga: to ważne, żeby obsłużyć błędy tutaj, a
                 // nie w bloku catch(), aby nie przetwarzać błędów
@@ -63,8 +62,7 @@ class ClientsPage extends React.Component {
                 this.setState({
                     clients: this.state.clients.filter((client, _) => client.id != id)
                 })
-            ).then (() => console.log(this.state.clients))
-            .then (() => console.log(this.state.clients.filter((client, _) => client.id == id)));
+            );
     }
 
     renderForm(){

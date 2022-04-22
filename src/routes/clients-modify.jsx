@@ -65,7 +65,6 @@ class ClientsModify extends React.Component {
 
     handleIDChange(event) {
         this.setState({ id: event.target.value })
-        console.log(this.state.id)
     }
 
     handleTitleChange(event) {

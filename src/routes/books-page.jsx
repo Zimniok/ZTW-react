@@ -29,7 +29,6 @@ class BooksPage extends React.Component {
                         isLoaded: true,
                         books: result
                     });
-                    console.log(this.state.books)
                 },
                 // Uwaga: to ważne, żeby obsłużyć błędy tutaj, a
                 // nie w bloku catch(), aby nie przetwarzać błędów
@@ -64,8 +63,7 @@ class BooksPage extends React.Component {
                 this.setState({
                     books: this.state.books.filter((book, _) => book.book.id != id)
                 })
-            ).then (() => console.log(this.state.books))
-            .then (() => console.log(this.state.books.filter((book, _) => book.book.id == id)));
+            );
     }
 
     renderForm(){

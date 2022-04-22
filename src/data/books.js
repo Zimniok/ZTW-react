@@ -3,11 +3,9 @@ export function getBooks() {
       .then(res => res.json())
       .then(
         (result) => {
-            console.log(result);
             return result;
         },
         (error) => {
-            console.log(error);
             return [];
         }
       )
