@@ -14,13 +14,11 @@ class LendsPage extends React.Component {
           };
 
           this.deletelend = this.deletelend.bind(this);
-          this.setlendToModify = this.setlendToModify.bind(this);
           this.addlendToList = this.addlendToList.bind(this);
-          this.modifylendInList = this.modifylendInList.bind(this);
     }
 
     componentDidMount() {
-        fetch("http://localhost:8080/get/lends")
+        fetch("http://localhost:8080/get/lendData")
             .then(res => res.json())
             .then(
                 (result) => {
@@ -46,11 +44,23 @@ class LendsPage extends React.Component {
     }
 
     deletelend(bookId, clientId) {
-        fetch('http://localhost:8080/return/' + bookId + '/' + clientId, { method: 'DELETE' })
+        let pos = this.state.lends.findIndex((b) => b.book.id != bookId && b.client.id != clientId && b.returnDate != null)
+        let templends = [...this.state.lends]
+        let lend = {...templends[pos]}
+
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+        
+        today = yyyy + '-' + mm + '-' + dd;
+
+        lend.returnDate = today
+        templends[pos] = lend
+        
+        fetch('http://localhost:8080/return/' + bookId + '/' + clientId, { method: 'PUT' })
             .then(() =>
-                this.setState({
-                    lends: this.state.lends.filter((lend, _) => lend.id != id)
-                })
+                this.setState({lends: templends})
             );
     }
 
@@ -58,7 +68,7 @@ class LendsPage extends React.Component {
         if(!this.state.show)
             return;
         return (
-            <LendsModify lendId={this.state.lendData.id} lendFirstName={this.state.lendData.firstName} lendLastName={this.state.lendData.lastName} addlendToList={this.addlendToList} />
+            <LendsModify lendBook={this.state.lendData.book} lendClient={this.state.lendData.client} lendLendDate={this.state.lendData.lendDate} lendReturnDate={this.state.lendData.returnDate} addlendToList={this.addlendToList} />
         )
     }
 

@@ -21,6 +21,9 @@ export default function App() {
             <li className="nav-item">
             <Link className="nav-link" to="/clients">Czytelnicy</Link>
             </li>
+            <li className="nav-item">
+            <Link className="nav-link" to="/lends">Wyporzyczenia</Link>
+            </li>
           </ul>
         </div>
         </div>

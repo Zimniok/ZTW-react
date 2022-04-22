@@ -21,11 +21,12 @@ class LendsList extends React.Component {
     renderTableData(lends) {
         return lends.map((lend, index) => {
             return (
-                <tr key={lend.bookId}>
-                    <td>{lend.id}</td>
-                    <td>{lend.firstName}</td>
-                    <td>{lend.lastName}</td>
-                    <td onClick={() => this.props.deletelend(lend.id)}><i className="fa-solid fa-arrow-rotate-left"></i></td>
+                <tr key={lend.book.id+'/'+lend.client.id+'/'+lend.lendDate}>
+                    <td>{lend.book.title}</td>
+                    <td>{lend.client.firstName + ' ' + lend.client.lastName}</td>
+                    <td>{lend.lendDate}</td>
+                    <td>{lend.returnDate}</td>
+                    <td onClick={() => this.props.deletelend(lend.book.id, lend.client.id)}><i className="fa-solid fa-arrow-rotate-left"></i></td>
                 </tr>
             )
         })
@@ -46,7 +47,7 @@ class LendsList extends React.Component {
                         <thead>
                             <tr>
                                 <th>Książka</th>
-                                <th>Autor</th>
+                                <th>Klient</th>
                                 <th>Data wyporzyczenia</th>
                                 <th>Data zwrotu</th>
                                 <th>Oddaj</th>

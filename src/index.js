@@ -7,6 +7,7 @@ import BooksModify from "./routes/books-modify";
 import BooksPage from "./routes/books-page";
 import AuthorsPage from "./routes/authors-page";
 import ClientsPage from "./routes/clients-page";
+import LendsPage from "./routes/lends-page";
 
 const rootElement = document.getElementById("root");
 render(
@@ -19,6 +20,7 @@ render(
         </Route>
         <Route path="authors/" element={<AuthorsPage />} />
         <Route path="clients/" element={<ClientsPage />} />
+        <Route path="lends/" element={<LendsPage />} />
         <Route
           path="*"
           element={
